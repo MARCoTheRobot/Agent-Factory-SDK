@@ -610,7 +610,7 @@ export class AgentFactoryHandler extends UniversalEventEmitter {
     };
 
     // Create temporary history for this request
-    const requestHistory = [...history, userMessage];
+    const requestHistory = [...history];
 
     // Emit message sent event
     this.emitEvent("messageSent", {
@@ -621,7 +621,7 @@ export class AgentFactoryHandler extends UniversalEventEmitter {
     try {
       const response = (await this.http.post("/chat/test-chat", {
         message,
-        history: requestHistory,
+        conversationHistory: requestHistory,
         agentState: this.agentState,
       })) as TestChatReturnType;
 
@@ -706,7 +706,7 @@ export class AgentFactoryHandler extends UniversalEventEmitter {
       const response = await this.http.post("/chat/test-skill", {
         message,
         skillId: selectedSkill.id,
-        history: requestHistory,
+        conversationHistory: requestHistory,
         agentState: this.agentState,
       });
 
