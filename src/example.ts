@@ -238,7 +238,7 @@ class InteractiveAgentChat {
 async function example() {
   // Initialize the SDK
   const agentFactory = new AgentFactoryHandler("your-api-key", {
-    baseUrl: "http://localhost:3000",
+    // baseUrl: "http://localhost:3000", // Uncomment to use local server
     debug: false,
   });
 
